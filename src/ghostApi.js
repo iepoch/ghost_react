@@ -1,10 +1,8 @@
 import GhostContentAPI from "@tryghost/content-api";
 
 const api = new GhostContentAPI({
-  url: "http://localhost:2368",
-
-  key: "9018873f200a7e45051bdea12c",
-
+  url: process.env.REACT_APP_URL,
+  key: process.env.REACT_APP_API_KEY,
   version: "v3"
 });
 
