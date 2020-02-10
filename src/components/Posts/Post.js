@@ -6,8 +6,8 @@ import Interweave, { ALLOWED_TAG_LIST } from "interweave";
 
 const Container = styled.div`
   img {
-    width: 20%;
-    height: 20%;
+    width: 50%;
+    height: 50%;
   }
   display: flex;
   align-contents: center;

@@ -3,7 +3,6 @@ import Post from "./Post";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { getPosts } from "../../actions/postActions";
-// import api from "../../ghostApi";
 const Container = styled.div``;
 class PostPage extends Component {
   componentDidMount() {
