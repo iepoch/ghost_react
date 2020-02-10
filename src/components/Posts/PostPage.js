@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import Post from "./Post";
+import styled from "styled-components";
 import { connect } from "react-redux";
 import { getPosts } from "../../actions/postActions";
 // import api from "../../ghostApi";
-
+const Container = styled.div``;
 class PostPage extends Component {
   componentDidMount() {
     this.props.getPosts();
@@ -11,13 +12,13 @@ class PostPage extends Component {
 
   render() {
     return (
-      <div>
+      <Container>
         {this.props.loading ? <h1>LOADING...</h1> : null}
         {this.props.error !== "" ? <h1>{this.props.error}</h1> : null}
         {this.props.posts.map(post => (
           <Post post={post} key={post.id} />
         ))}
-      </div>
+      </Container>
     );
   }
 }
