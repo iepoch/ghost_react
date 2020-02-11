@@ -4,14 +4,7 @@ import { connect } from "react-redux";
 import Interweave, { ALLOWED_TAG_LIST } from "interweave";
 // import connect from "react-redux/lib/connect/connect";
 
-const Container = styled.div`
-  img {
-    width: 50%;
-    height: 50%;
-  }
-  display: flex;
-  align-contents: center;
-`;
+const Container = styled.div``;
 
 const Header = styled.div`
   // flex: 1;
@@ -54,6 +47,7 @@ const Post = ({ post }) => {
         content={post.html}
         allowList={ALLOWED_TAG_LIST.concat("iframe")}
       />
+      {/* {post.html} */}
     </Container>
   );
 };

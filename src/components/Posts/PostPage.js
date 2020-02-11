@@ -3,7 +3,23 @@ import Post from "./Post";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { getPosts } from "../../actions/postActions";
-const Container = styled.div``;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  .kg-gallery-row {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-evenly;
+    margin-left: 30px;
+    img {
+      width: 96.2%;
+      height: 100%;
+    }
+  }
+`;
 class PostPage extends Component {
   componentDidMount() {
     this.props.getPosts();
