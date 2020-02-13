@@ -31,7 +31,7 @@ class PostPage extends Component {
         {this.props.loading ? <h1>LOADING...</h1> : null}
         {this.props.error !== "" ? <h1>{this.props.error}</h1> : null}
         {this.props.posts.map(post => (
-          <Post post={post} key={post.id} />
+          <Post post={post} key={post.id} tags={post.tags} />
         ))}
       </Container>
     );

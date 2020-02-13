@@ -40,14 +40,18 @@ const Header = styled.div`
   // }
 `;
 
-const Post = ({ post }) => {
+const Post = ({ post, tags }) => {
   return (
     <Container key={post.id}>
       <Interweave
         content={post.html}
         allowList={ALLOWED_TAG_LIST.concat("iframe")}
       />
+
       {/* {post.html} */}
+      {tags.map(tag => (
+        <div>{tag.name}</div>
+      ))}
     </Container>
   );
 };

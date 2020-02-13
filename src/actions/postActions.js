@@ -9,7 +9,7 @@ export const ADD_POST = "ADD_POST";
 export const getPosts = () => dispatch => {
   dispatch({ type: LOADING });
   api.posts
-    .browse()
+    .browse({ include: "tags" })
     .then(res => {
       console.log("this is in the GetPost Actions", res);
       dispatch({ type: GET_POSTS, payload: res });
