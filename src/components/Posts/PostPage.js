@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import Post from "./Post";
+import { Link } from "react-router-dom";
+// import Post from "./Post";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { getPosts } from "../../actions/postActions";
@@ -30,9 +31,19 @@ class PostPage extends Component {
       <Container>
         {this.props.loading ? <h1>LOADING...</h1> : null}
         {this.props.error !== "" ? <h1>{this.props.error}</h1> : null}
-        {this.props.posts.map(post => (
-          <Post post={post} key={post.id} tags={post.tags} />
-        ))}
+        {this.props.posts.map(post => {
+          if (!post.featured) {
+            return <div key={post.id}></div>;
+          }
+          return (
+            <Link to={"/post/" + post.slug} key={post.id}>
+              <div key={post.id}>
+                <img src={post.feature_image} alt={post.slug} />
+                <h1>{post.title}</h1>
+              </div>
+            </Link>
+          );
+        })}
       </Container>
     );
   }

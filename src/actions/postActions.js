@@ -11,7 +11,6 @@ export const getPosts = () => dispatch => {
   api.posts
     .browse({ include: "tags" })
     .then(res => {
-      console.log("this is in the GetPost Actions", res);
       dispatch({ type: GET_POSTS, payload: res });
     })
     .catch(err => {

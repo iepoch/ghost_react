@@ -1,9 +1,8 @@
-import React from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import Interweave, { ALLOWED_TAG_LIST } from "interweave";
-// import connect from "react-redux/lib/connect/connect";
-
+import { getPosts } from "../../actions/postActions";
 const Container = styled.div``;
 
 const Header = styled.div`
@@ -40,21 +39,32 @@ const Header = styled.div`
   // }
 `;
 
-const Post = ({ post, tags }) => {
-  return (
-    <Container key={post.id}>
-      <Interweave
-        content={post.html}
-        allowList={ALLOWED_TAG_LIST.concat("iframe")}
-      />
+class Post extends Component {
+  componentDidMount() {
+    this.props.getPosts();
+  }
 
-      {/* {post.html} */}
-      {tags.map(tag => (
+  render() {
+    let post = this.props.posts.find(
+      post => `${post.slug}` === this.props.match.params.slug
+    );
+    return (
+      <Container key={post.id}>
+        <Interweave
+          content={post.html}
+          allowList={ALLOWED_TAG_LIST.concat("iframe")}
+        />
+
+        {/* {post.html} */}
+        {/* {tags.map(tag => (
         <div>{tag.name}</div>
-      ))}
-    </Container>
-  );
-};
-const mapStateToProps = () => ({});
+      ))} */}
+      </Container>
+    );
+  }
+}
+const mapStateToProps = state => ({
+  posts: state.postReducer.posts
+});
 
-export default connect(mapStateToProps)(Post);
+export default connect(mapStateToProps, { getPosts })(Post);
