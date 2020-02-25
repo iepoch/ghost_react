@@ -54,11 +54,6 @@ class Post extends Component {
           content={post.html}
           allowList={ALLOWED_TAG_LIST.concat("iframe")}
         />
-
-        {/* {post.html} */}
-        {/* {tags.map(tag => (
-        <div>{tag.name}</div>
-      ))} */}
       </Container>
     );
   }

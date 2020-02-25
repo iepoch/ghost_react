@@ -7,20 +7,17 @@ import { getPosts } from "../../actions/postActions";
 
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
-
-  .kg-gallery-row {
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    justify-content: space-evenly;
-    margin-left: 30px;
-    img {
-      width: 96.2%;
-      height: 100%;
-    }
+  flex-direction: row;
+  .span {
+    justify-content: space-between;
+  }
+  img {
+    width: 20%;
+    height: 50%;
   }
 `;
+
+const Tags = styled.div``;
 class PostPage extends Component {
   componentDidMount() {
     this.props.getPosts();
@@ -36,12 +33,21 @@ class PostPage extends Component {
             return <div key={post.id}></div>;
           }
           return (
-            <Link to={"/post/" + post.slug} key={post.id}>
-              <div key={post.id}>
-                <img src={post.feature_image} alt={post.slug} />
-                <h1>{post.title}</h1>
-              </div>
-            </Link>
+            <>
+              <Link
+                to={"/post/" + post.slug}
+                key={post.id}
+                style={{ textDecoration: "none" }}
+              >
+                <div key={post.id}>
+                  <img src={post.feature_image} alt={post.slug} />
+                  <h1>{post.title}</h1>
+                  {post.tags.map(tag => (
+                    <span> {tag.name} </span>
+                  ))}
+                </div>
+              </Link>
+            </>
           );
         })}
       </Container>
