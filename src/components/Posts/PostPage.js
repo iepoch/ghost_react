@@ -3,39 +3,60 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import Interweave, { ALLOWED_TAG_LIST } from "interweave";
 import { getPosts } from "../../actions/postActions";
-const Container = styled.div``;
+const Main = styled.div`
+vh: 100%;
+vw: 100%;
+background-color:#333;
 
-const Header = styled.div`
-  flex: 1;
-  width: 270px;
-  height: 100px;
-  border: 0.5px solid #ccc;
-  background-color: white;
-  border-radius: 5px;
-  box-shadow: 1px 1px 15px 1px lightgray;
+`
+const Container = styled.div`
 
-  h1 {
+figure {
+  border: 1px #cccccc solid;
+  padding: 4px;
+  margin: auto;
+}
+
+figcaption {
+  background-color: black;
+  color: white;
+  font-style: italic;
+  padding: 2px;
+  text-align: center;
+}
+
+  img {
+
+    margin:20px;
+    width: 40%;
+    height:40%;
+ 
+  }
+  span {
+
+    margin: 10px 10px;
+
+  }
+  h2{
     white-space: nowrap;
-    font-size: 16px;
-    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
     margin: 10px 10px;
     cursor: pointer;
-
+     width: 40%;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
-  p {
-    overflow: hidden;
-    line-height: 10px;
-    margin: 0px 10px;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 7;
-    -webkit-box-orient: vertical;
-  }
-  hr {
-    width: 10%;
-    border: 0.5px solid #ccc;
+    }
+    code {
+    font-family: Monaco, monospace;
+    font-size: 12px;
+    line-height: 100%;
+    background-color: orange;
+    padding: 0.2em;
+    letter-spacing: -0.05em;
+    word-break: normal;
+    border-radius: 5px;
   }
 `;
 
@@ -43,19 +64,22 @@ class PostPage extends Component {
   componentDidMount() {
     this.props.getPosts();
   }
-
+    
   render() {
     if (this.props.posts.length) {
       let post = this.props.posts.find(
         post => `${post.slug}` === this.props.match.params.slug
       );
+      console.log(post.html)
       return (
-        <Container key={post.comment_id}>
+      
+      
           <Interweave
             content={post.html}
             allowList={ALLOWED_TAG_LIST.concat("iframe")}
           />
-        </Container>
+  
+    
       );
     } else {
       return <> </>;

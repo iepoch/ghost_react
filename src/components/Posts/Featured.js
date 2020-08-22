@@ -40,8 +40,8 @@ const Content = styled.div`
     border: 0.5px solid #ccc;
   }
 `;
-const Post = ({ post }) => {
-  if (!post.featured) {
+const Featured = ({ post }) => {
+  if (post.featured) {
     return (
       <Link
         to={"/post/" + post.slug}
@@ -64,4 +64,4 @@ const Post = ({ post }) => {
 
 const mapStateToProps = () => ({});
 
-export default connect(mapStateToProps)(Post);
+export default connect(mapStateToProps)(Featured);
