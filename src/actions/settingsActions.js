@@ -15,15 +15,4 @@ export const getSettings = () => dispatch => {
       dispatch({ type: ERROR, errorMessage: "Error Loading Settings" });
     });
 };
-// export const getTags = () => dispatch => {
-//   dispatch({ type: LOADING });
-//   api.tags
-//     .browse()
-//     .then(res => {
-//       console.log("this is in the GetPost Actions", res);
-//       dispatch({ type: GET_SETTINGS, payload: res });
-//     })
-//     .catch(err => {
-//       dispatch({ type: ERROR, errorMessage: "Error Loading Settings" });
-//     });
-// };
+

@@ -50,10 +50,6 @@ const Post = ({ post }) => {
       >
       <Content>
           <img src={post.feature_image} alt={post.slug} />
-          <h1>{post.title}</h1>
-          {post.tags.map(tag => (
-            <span key={tag.slug}> {tag.name} </span>
-          ))}
           </Content>
       </Link>
     );

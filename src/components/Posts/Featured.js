@@ -44,7 +44,7 @@ const Featured = ({ post }) => {
   if (post.featured) {
     return (
       <Link
-        to={"/post/" + post.slug}
+        to={post.slug}
         key={post.id}
         style={{ textDecoration: "none", color: "black" }}
       >

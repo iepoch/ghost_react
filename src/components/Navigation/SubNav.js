@@ -8,7 +8,6 @@ const Navigation = styled.div`
   display: flex;
   justify-content: space-between;
   align-content: center;
-  background-color: transparent;
 
  >.blog-title-name {
   font-size: 30px;
@@ -36,13 +35,13 @@ list-style: none;
 
 `
 
-class Nav extends Component  {
+class SubNav extends Component  {
   componentDidMount() {
     this.props.getSettings();
   }
 
   render() {
-    let nav = this.props.settings.navigation
+    let nav = this.props.settings.secondary_navigation
     let itemsToRender; 
     if(nav){
       itemsToRender = nav.map(item => {
@@ -77,4 +76,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { getSettings })(Nav);
+export default connect(mapStateToProps, { getSettings })(SubNav);

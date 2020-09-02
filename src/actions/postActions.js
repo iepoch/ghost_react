@@ -9,12 +9,14 @@ export const getPosts = () => dispatch => {
   api.posts
     .browse({ include: "tags" })
     .then(res => {
+      console.log(res)
       dispatch({ type: GET_POSTS, payload: res });
     })
     .catch(err => {
       dispatch({ type: ERROR, errorMessage: "Error Loading Posts" });
     });
 };
+
 export const getTags = () => dispatch => {
   dispatch({ type: LOADING });
   api.tags
