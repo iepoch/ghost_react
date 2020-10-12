@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { getSettings } from "../../actions/settingsActions";
-import { Link } from "react-router-dom";
+import Link from "../../utils/Link"
+import GlitchClip from 'react-glitch-effect/core/Clip'
 
 const Navigation = styled.div`
   display: flex;
@@ -16,6 +17,7 @@ const Navigation = styled.div`
   font-weight: bold;
   color: #44444;
   margin: 20px;
+  font-family: "Quarz";
 }
 
 ul {
@@ -26,10 +28,11 @@ li {
 list-style: none;
  display: flex;
  margin: 20px;
- font-size: 20px;
- color:#444444 ;
+ font-family:"Major";
+ font-size: 16px;
+ color: white ;
  a:visited{
-   color: #444444;
+   color: white;
  }
  justify-content: space-between;
 }
@@ -50,6 +53,7 @@ class Nav extends Component  {
         <li key={item.label}>
         <Link style={{textDecoration:`none`}} to={item.url}>
         {item.label}
+    
         </Link>
         </li>)
       })
@@ -60,7 +64,10 @@ class Nav extends Component  {
     return (
       <Navigation> 
        <div className="blog-title-name">
+       <GlitchClip disabled={false}  duration="3s">
       {setting.title }
+
+       </GlitchClip>
        </div>
       <ul>
         {itemsToRender}

@@ -5,29 +5,21 @@ import Post from "./Post";
 import { connect } from "react-redux";
 import { getPosts } from "../../actions/postActions";
 // import Masonry from "react-masonry-css"
-// import Masonry from 'react-masonry-component';
+import Masonry from 'react-masonry-component';
 
 
 
 const PostBody = styled.div`
-
-   background-color: #444444;
-   height:100%;
-
-
+ .grid {
+  margin: 0 auto;
+}
 `;
 
-const Masonry = styled.div`
-
-
-`;
-
-// const breakpointColumnsObj = {
-//   default: 4,
-//   1100: 3,
-//   700: 2,
-//   500: 1
-// }
+const masonryOptions = {
+  fitWidth: true,
+  columnWidth: 80,
+  gutter: 5
+};
 
 
 class PostList extends Component {
@@ -55,7 +47,13 @@ class PostList extends Component {
       <PostBody>
         {this.props.loading ? <h1>LOADING...</h1> : null}
         {this.props.error !== "" ? <h1>{this.props.error}</h1> : null}
-        <Masonry className='grid' >
+        <Masonry 
+        className='grid'
+        elementType={'div'}
+        disableImagesLoaded={false}
+        updateOnEachImageLoad={false}
+        options={masonryOptions}
+        >
         {childElements}
         </Masonry>
       </PostBody>
